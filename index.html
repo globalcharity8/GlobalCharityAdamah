@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Charity Adamah</title>
+  <meta name="description" content="Global Charity Adamah supports families and communities through food, clean water, education, and emergency relief." />
+
+  <style>
+    :root{
+      --ink:#1f2a2a;
+      --muted:#556565;
+      --brand:#2f6f63;
+      --gold:#d7a84a;
+      --paper:#ffffff;
+      --soft:#f2efe8;
+      --line: rgba(31,42,42,.12);
+      --shadow: 0 18px 40px rgba(31,42,42,.10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 520px at 20% 0%, rgba(215,168,74,.25), transparent 55%),
+        radial-gradient(900px 520px at 95% 10%, rgba(47,111,99,.18), transparent 55%),
+        linear-gradient(180deg, #fbfaf7 0%, #f7f4ed 60%, #fbfaf7 100%);
+      line-height:1.6;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:.55rem;
+      padding:.85rem 1.05rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--paper);
+      cursor:pointer;
+      font-weight: 700;
+      letter-spacing:.2px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      box-shadow: 0 10px 22px rgba(31,42,42,.08);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 26px rgba(31,42,42,.12)}
+    .btn.primary{
+      background: linear-gradient(180deg, var(--brand), #255a50);
+      color: #fff;
+      border-color: rgba(47,111,99,.35);
+      box-shadow: 0 14px 30px rgba(47,111,99,.18);
+    }
+    .btn.primary:hover{background: linear-gradient(180deg, #357a6d, #234f47)}
+    .btn.soft{background: var(--soft); border-color: rgba(31,42,42,.10); box-shadow:none}
+
+    /* Top bar */
+    .top{
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+      position: sticky;
+      top:0;
+      z-index:50;
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .brand-title{display:flex; flex-direction:column; line-height:1.1}
+    .brand-title strong{font-size:1rem}
+    .brand-title span{font-size:.88rem; color:var(--muted)}
+
+    .links{
+      display:flex; align-items:center; gap: 8px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .links a{padding: 10px 10px; border-radius: 12px; color: var(--muted)}
+    .links a:hover{background: rgba(47,111,99,.08); color: var(--ink)}
+
+    .nav-cta{display:flex; align-items:center; gap:10px}
+    .menu-btn{display:none}
+    .mobile{display:none; border-top:1px solid var(--line); padding:10px 0 16px}
+    .mobile a{
+      display:block; padding:12px 10px; border-radius:12px;
+      color: var(--muted); font-family: ui-sans-serif, system-ui;
+    }
+    .mobile a:hover{background: rgba(47,111,99,.08); color: var(--ink)}
+    .mobile.show{display:block}
+
+    /* Logo */
+    .logo-wrap{
+      width:46px; height:46px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(47,111,99,.16), rgba(215,168,74,.10));
+      border:1px solid rgba(31,42,42,.14);
+      box-shadow: 0 14px 30px rgba(31,42,42,.10);
+    }
+    .logo-svg{width:32px; height:32px}
+
+    /* Cards */
+    .card{
+      background: rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+   /* FULL PAGE HERO SLIDESHOW */
+.hero-full{
+  position: relative;
+  min-height: calc(100vh - 74px); /* subtract sticky nav height */
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding: 44px 0;
+}
+
+/* Background images */
+.hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 1s ease, transform 6s ease;
+}
+.hero-img.active{
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.hero-left{
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;  /* MAIN FIX: adds spacing between hero elements */
+}
+
+/* Headline spacing */
+.hero-full h1{
+  margin: 0;
+  padding: 0;
+  line-height: 1.05;
+}
+
+/* Paragraph spacing */
+.hero-full .lead{
+  margin: 0;
+  max-width: 65ch;
+  line-height: 1.65;
+}
+
+/* Buttons spacing */
+.hero-actions{
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px; /* more space between buttons */
+}
+
+/* Quote spacing */
+.hero-full .quote{
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding-left: 16px;
+  line-height: 1.55;
+}
+
+/* Trust cards spacing */
+.hero-full .strip{
+  margin-top: 12px;
+  gap: 18px;
+}
+
+/* Make trust cards taller / roomier */
+.hero-full .strip .mini{
+  padding: 18px;
+  border-radius: 18px;
+}
+
+/* Add space between title and description inside trust cards */
+.hero-full .mini strong{
+  margin-bottom: 8px;
+}
+
+/* Light dark overlay */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(900px 560px at 20% 25%, rgba(0,0,0,.25), rgba(0,0,0,.55)),
+    linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,.55));
+}
+
+/* Content */
+.hero-content{
+  position: relative;
+  z-index: 2;
+}
+
+/* Left text block */
+.hero-left{
+  max-width: 720px;
+}
+
+/* White text */
+.hero-full h1{
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.02;
+  letter-spacing: -0.3px;
+  font-size: clamp(2.4rem, 5vw, 4.1rem);
+}
+
+.hero-full .lead{
+  color: rgba(255,255,255,.88);
+  font-family: ui-sans-serif, system-ui;
+  font-size: 1.12rem;
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* Buttons tuned for dark bg */
+.hero-full .btn{
+  border-color: rgba(255,255,255,.20);
+  background: rgba(255,255,255,.92);
+}
+.hero-full .btn:hover{ background: #fff; }
+
+.hero-full .btn.primary{
+  background: linear-gradient(180deg, var(--brand), #255a50);
+  border-color: rgba(255,255,255,.0);
+  color: #fff;
+}
+
+.hero-full .btn.soft{
+  background: rgba(255,255,255,.16);
+  color: #fff;
+  border-color: rgba(255,255,255,.22);
+  box-shadow: none;
+}
+.hero-full .btn.soft:hover{
+  background: rgba(255,255,255,.22);
+}
+
+/* Quote + trust chips on dark */
+.hero-full .quote{
+  margin-top: 18px;
+  border-left: 4px solid rgba(215,168,74,.95);
+  padding-left: 14px;
+  color: rgba(255,255,255,.86);
+}
+.hero-full .quote strong{ color:#fff; }
+
+.hero-full .strip{
+  margin-top: 16px;
+}
+
+.hero-full .strip .mini{
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.20);
+  color: rgba(255,255,255,.9);
+}
+.hero-full .mini span{ color: rgba(255,255,255,.82); }
+
+/* Mobile spacing */
+@media (max-width: 920px){
+  .hero-full{ padding: 32px 0; }
+  .hero-left{ max-width: 100%; }
+  .hero-full .strip{ grid-template-columns: 1fr; }
+}
+
+
+    .quote{
+      border-left: 4px solid rgba(215,168,74,.85);
+      padding-left: 14px;
+      margin: 0;
+      color: var(--muted);
+      font-style: italic;
+      font-family: ui-serif, Georgia;
+    }
+    .quote strong{color: var(--ink); font-style: normal}
+
+    /* Carousel */
+    .carousel{
+      border-radius: 20px;
+      height: 340px;
+      border: 1px solid rgba(31,42,42,.12);
+      background: #fff;
+      overflow:hidden;
+      position: relative;
+      box-shadow: 0 12px 25px rgba(31,42,42,.08);
+    }
+    .slides{height: 100%; position: relative}
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition: opacity .6s ease;
+    }
+    .slide.active{opacity:1}
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* Caption overlay (FIXED so text doesn’t stack word-by-word) */
+    /* Caption overlay: compact bottom-left, dots underneath */
+.caption{
+  position:absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  pointer-events: none; /* lets arrows stay clickable even if overlay overlaps */
+}
+
+/* Small frosted card */
+.cap-card{
+  max-width: 62%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(31,42,42,.12);
+  backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui;
+  pointer-events: auto; /* still selectable text */
+}
+
+.cap-card strong{
+  display:block;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.cap-card span{
+  display:block;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+/* Dots take full width under the caption */
+.dots{
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  pointer-events: auto; /* clickable dots */
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background: rgba(31,42,42,.22);
+  border: 1px solid rgba(31,42,42,.12);
+  cursor:pointer;
+}
+
+.dot.active{
+  background: var(--brand);
+  border-color: rgba(47,111,99,.35);
+}
+
+/* Mobile: caption card becomes wider but still not huge */
+@media (max-width: 920px){
+  .cap-card{max-width: 92%;}
+}
+/* Caption overlay: compact bottom-left, dots underneath */
+.caption{
+  position:absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  pointer-events: none; /* lets arrows stay clickable even if overlay overlaps */
+}
+
+/* Small frosted card */
+.cap-card{
+  max-width: 62%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(31,42,42,.12);
+  backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui;
+  pointer-events: auto; /* still selectable text */
+}
+
+.cap-card strong{
+  display:block;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.cap-card span{
+  display:block;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+/* Dots take full width under the caption */
+.dots{
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  pointer-events: auto; /* clickable dots */
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background: rgba(31,42,42,.22);
+  border: 1px solid rgba(31,42,42,.12);
+  cursor:pointer;
+}
+
+.dot.active{
+  background: var(--brand);
+  border-color: rgba(47,111,99,.35);
+}
+
+/* Mobile: caption card becomes wider but still not huge */
+@media (max-width: 920px){
+  .cap-card{max-width: 92%;}
+}
+
+    /* Trust strip */
+    .strip{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+      font-family: ui-sans-serif, system-ui;
+    }
+    .strip .mini{
+      background: var(--soft);
+      border:1px solid rgba(31,42,42,.10);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow:none;
+    }
+    .mini strong{display:block; margin-bottom:2px}
+    .mini span{color: var(--muted); font-size:.95rem}
+
+    section{padding: 22px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom: 10px}
+    h2{margin:0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); letter-spacing: -.2px}
+    .sub{margin:.35rem 0 0; color: var(--muted); font-family: ui-sans-serif, system-ui}
+
+    .grid{display:grid; gap:14px}
+    .causes{grid-template-columns: repeat(3, 1fr)}
+    .cause{
+      background: rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 20px rgba(31,42,42,.06);
+      font-family: ui-sans-serif, system-ui;
+    }
+    .cause .icon{
+      width:44px; height:44px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(47,111,99,.10);
+      border: 1px solid rgba(47,111,99,.18);
+      font-size: 1.2rem;
+    }
+    .cause h3{margin: 10px 0 6px; font-size: 1.08rem}
+    .cause p{margin:0; color: var(--muted)}
+
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch}
+    .impact-list{
+      margin: 12px 0 0; padding: 0; list-style: none;
+      display:grid; gap: 10px;
+      font-family: ui-sans-serif, system-ui;
+    }
+    .impact-list li{
+      display:flex; gap:10px; align-items:flex-start;
+      background: var(--soft);
+      border: 1px solid rgba(31,42,42,.10);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .check{
+      width:24px; height:24px; border-radius: 8px;
+      display:grid; place-items:center;
+      background: rgba(215,168,74,.25);
+      border:1px solid rgba(215,168,74,.35);
+      font-weight: 900;
+      flex: 0 0 auto;
+      font-family: ui-sans-serif, system-ui;
+    }
+
+    .donate-box{
+      background:
+        radial-gradient(700px 240px at 20% 0%, rgba(215,168,74,.25), transparent 55%),
+        linear-gradient(180deg, rgba(47,111,99,.08), rgba(255,255,255,.86));
+      border: 1px solid rgba(47,111,99,.18);
+    }
+    .donate-box p{color: var(--muted); font-family: ui-sans-serif, system-ui; margin:.4rem 0 0}
+    .amounts{display:flex; flex-wrap:wrap; gap:10px; margin: 12px 0 12px}
+    .chip{
+      padding:.65rem .95rem;
+      border-radius:999px;
+      border:1px solid rgba(31,42,42,.14);
+      background: rgba(255,255,255,.85);
+      cursor:pointer;
+      font-family: ui-sans-serif, system-ui;
+      font-weight: 700;
+    }
+    .chip:hover{background: #fff}
+    .field{
+      width:100%;
+      padding: .9rem 1rem;
+      border-radius: 14px;
+      border:1px solid rgba(31,42,42,.14);
+      background: rgba(255,255,255,.95);
+      font-family: ui-sans-serif, system-ui;
+      font-size: 1rem;
+    }
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .row > *{flex:1 1 160px}
+
+    footer{
+      padding: 32px 0 40px;
+      border-top:1px solid var(--line);
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui;
+    }
+    .foot{display:grid; grid-template-columns: 1.2fr .8fr; gap: 14px; align-items:start}
+    .fine{font-size:.9rem}
+    .foot a{color: var(--brand)}
+    .foot a:hover{text-decoration:underline}
+
+    @media (max-width: 920px){
+      .hero-wrap{grid-template-columns: 1fr}
+      .strip{grid-template-columns: 1fr}
+      .causes{grid-template-columns: 1fr}
+      .two{grid-template-columns: 1fr}
+      .links{display:none}
+      .menu-btn{display:inline-flex}
+      .carousel{height: 260px}
+
+      /* On mobile: dots go under text so nothing gets squeezed */
+      .caption{flex-direction: column; align-items:flex-start}
+      .dots{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Global Charity Adamah Home">
+          <div class="logo-wrap" aria-hidden="true">
+            <!-- WORLD + AFRICA ICON -->
+            <svg class="logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="26" stroke="#2f6f63" stroke-width="4" opacity="0.95"/>
+              <path d="M10 28C16 24 22 22 32 22C42 22 48 24 54 28" stroke="#d7a84a" stroke-width="3" opacity="0.9" stroke-linecap="round"/>
+              <path d="M10 36C16 40 22 42 32 42C42 42 48 40 54 36" stroke="#d7a84a" stroke-width="3" opacity="0.9" stroke-linecap="round"/>
+              <path d="M32 8C24 16 22 24 22 32C22 40 24 48 32 56" stroke="#2f6f63" stroke-width="3" opacity="0.75" stroke-linecap="round"/>
+              <path d="M32 8C40 16 42 24 42 32C42 40 40 48 32 56" stroke="#2f6f63" stroke-width="3" opacity="0.75" stroke-linecap="round"/>
+              <path d="M34 20
+                       C32 20, 30 22, 29 24
+                       C28 26, 28 28, 29 30
+                       C30 32, 29 34, 28 36
+                       C27 38, 28 41, 30 43
+                       C32 45, 33 48, 35 49
+                       C37 50, 38 48, 39 46
+                       C40 44, 41 43, 42 41
+                       C43 39, 42 37, 41 35
+                       C40 33, 41 31, 42 29
+                       C43 27, 42 24, 40 23
+                       C38 22, 37 20, 34 20 Z"
+                    fill="#2f6f63" opacity="0.95"/>
+            </svg>
+          </div>
+
+          <div class="brand-title">
+            <strong>Global Charity Adamah</strong>
+            <span>By His grace through our faith.</span>
+          </div>
+        </a>
+
+        <nav class="links" aria-label="Primary navigation">
+          <a href="#our-work">Our Work</a>
+          <a href="#impact">Impact</a>
+          <a href="#get-involved">Get Involved</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="btn soft menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+          <a class="btn primary" href="#donate">Donate</a>
+        </div>
+      </div>
+
+      <div class="mobile" id="mobileNav" aria-label="Mobile navigation">
+        <a href="#our-work">Our Work</a>
+        <a href="#impact">Impact</a>
+        <a href="#get-involved">Get Involved</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+   <header class="hero-full" id="top">
+  <!-- Background slideshow images (no captions, no UI) -->
+  <div class="hero-bg" id="heroBg" aria-hidden="true">
+    <img class="hero-img active" src="CommunityKids.png" alt="">
+    <img class="hero-img" src="CommunityKids.png" alt="">
+    <img class="hero-img" src="CommunityKids2.png" alt="">
+    <img class="hero-img" src="CommunityKids3.png" alt="">
+    <img class="hero-img" src="CommunityKids7.png" alt="">
+    <img class="hero-img" src="Community5.png" alt="">
+    <img class="hero-img" src="FoodDonation.png" alt="">
+    <img class="hero-img" src="FoodDonations.png" alt="">
+    <img class="hero-img" src="ServinfFood2.png" alt="">
+    <img class="hero-img" src="GroupPicture.png" alt="">
+    <img class="hero-img" src="Selfie.png" alt="">
+    <img class="hero-img" src="Selfie2.png" alt="">
+    <img class="hero-img" src="Selfie3.png" alt="">
+  </div>
+
+  <!-- Overlay (light dark) -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Content on top -->
+  <div class="container hero-content">
+    <div class="hero-left">
+      <h1>Love through good works. Faith that changes lives.</h1>
+
+      <p class="lead">
+        Global Charity Adamah exists to meet people's need with open hands and supporting
+        families with essentials, strengthening communities through local
+        partnerships, and showing up fast when crisis hits.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#donate">Give now</a>
+        <a class="btn" href="#get-involved">Volunteer</a>
+        <a class="btn soft" href="#our-work">See our work</a>
+      </div>
+
+    
+      <div class="strip" aria-label="Trust and transparency highlights">
+        <div class="mini">
+          <strong>People-first</strong>
+          <span>We serve with respect, privacy, and care.</span>
+        </div>
+        <div class="mini">
+          <strong>Local partners</strong>
+          <span>We support trusted leaders on the ground.</span>
+        </div>
+        <div class="mini">
+          <strong>Real stories</strong>
+          <span>Updates you can follow and share.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <section id="our-work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Our work</h2>
+            <p class="sub">We focus on essentials and resilience—support that holds people up, not just over.</p>
+          </div>
+        </div>
+
+        <div class="grid causes">
+          <article class="cause"><div class="icon" aria-hidden="true">🍞</div><h3>Food & essentials</h3><p>Meal support, pantry partnerships, and essential supply distributions.</p></article>
+          <article class="cause"><div class="icon" aria-hidden="true">💧</div><h3>Clean water</h3><p>Support for water access initiatives and community-maintained solutions.</p></article>
+          <article class="cause"><div class="icon" aria-hidden="true">🎒</div><h3>Education support</h3><p>School supplies, fee assistance, and learning opportunities for youth.</p></article>
+          <article class="cause"><div class="icon" aria-hidden="true">🕊️</div><h3>Emergency relief</h3><p>Fast support for families impacted by crises—delivered with care.</p></article>
+          <article class="cause"><div class="icon" aria-hidden="true">🧡</div><h3>Health & dignity</h3><p>Hygiene kits and critical essentials, with privacy and respect.</p></article>
+          <article class="cause"><div class="icon" aria-hidden="true">🤝</div><h3>Community partnerships</h3><p>We invest in local leaders and programs already trusted on the ground.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <div class="two">
+          <div class="card">
+            <h2>Impact that’s honest</h2>
+            <p class="sub">All of our works goes towards helping children and families.</p>
+
+            <ul class="impact-list">
+              <li><span class="check" aria-hidden="true">✓</span><div><strong>Meals supported:</strong> 2,400+<div class="sub">Homeless food support.</div></div></li>
+              <li><span class="check" aria-hidden="true">✓</span><div><strong>Partners:</strong> 3<div class="sub">Local organizations and leaders.</div></div></li>
+              <li><span class="check" aria-hidden="true">✓</span><div><strong>Regions served:</strong> 5<div class="sub">Support where it’s needed most.</div></div></li>
+            </ul>
+          </div>
+
+          <div class="card donate-box" id="donate">
+            <h2>Give today</h2>
+            <p>Every gift helps a family breathe a little easier.</p>
+
+            <div class="amounts" role="group" aria-label="Donation amounts">
+              <button class="chip" type="button" data-amt="25">$25</button>
+              <button class="chip" type="button" data-amt="50">$50</button>
+              <button class="chip" type="button" data-amt="100">$100</button>
+              <button class="chip" type="button" data-amt="250">$250</button>
+            </div>
+
+            <label class="sr-only" for="customAmount">Custom donation amount</label>
+            <input class="field" id="customAmount" inputmode="decimal" placeholder="Custom amount (e.g., 75)" />
+
+            <div class="row" style="margin-top:10px">
+              <input class="field" id="name" placeholder="Name (optional)" />
+              <input class="field" id="email" type="email" placeholder="Email (optional)" />
+            </div>
+
+            <button class="btn primary" style="width:100%; margin-top:12px" type="button" id="donateBtn">
+              Donate
+            </button>
+
+            <p class="fine" style="margin-top:10px">
+             Connect Stripe/PayPal when ready.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="get-involved">
+      <div class="container">
+        <div class="card">
+          <div class="section-head">
+            <div>
+              <h2>Get involved</h2>
+              <p class="sub">Give your time, your resources, or your network—there’s a place for you here.</p>
+            </div>
+          </div>
+
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap:14px">
+            <div class="cause">
+              <div class="icon" aria-hidden="true">👐</div>
+              <h3>Volunteer</h3>
+              <p>Events, packing drives, outreach, and skills-based support.</p>
+            </div>
+
+            <div class="cause">
+              <div class="icon" aria-hidden="true">🏢</div>
+              <h3>Partner / Sponsor</h3>
+              <p>Organizations can fund a program, match donations, or run a campaign with us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card">
+          <h2>Contact</h2>
+          <p class="sub">Replace these placeholders with your real contact details.</p>
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap:14px">
+            <div class="cause"><div class="icon" aria-hidden="true">✉️</div><h3>Email</h3><p>hello@globalcharityadamah.org</p></div>
+            <div class="cause"><div class="icon" aria-hidden="true">📍</div><h3>Where we serve</h3><p>Africa + Global Partners</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>
+            <p class="fine" style="margin:0">
+              © <span id="year"></span> Global Charity Adamah.
+            </p>
+          </div>
+          <div style="text-align:right">
+            <p class="fine" style="margin:0"><a href="#top">Back to top</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('show');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Donation chips (demo)
+    const amountInput = document.getElementById('customAmount');
+    document.querySelectorAll('[data-amt]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        amountInput.value = btn.getAttribute('data-amt');
+        amountInput.focus();
+      });
+    });
+
+    // Demo donate
+    document.getElementById('donateBtn')?.addEventListener('click', () => {
+      const amt = (amountInput.value || '').trim();
+      const pretty = amt ? `$${amt}` : '(no amount entered)';
+      alert(`Thank you for your heart. (Demo)\n\nDonation amount: ${pretty}\n\nConnect Stripe/PayPal to accept real donations.`);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== HERO CAROUSEL (auto + arrows + dots) =====
+    const carousel = document.getElementById('heroCarousel');
+    const slides = Array.from(carousel.querySelectorAll('.slide'));
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    const dotsWrap = document.getElementById('dots');
+    const capTitle = document.getElementById('capTitle');
+    const capText  = document.getElementById('capText');
+
+    // Must match slide order above
+    const captions = [
+      { title: "Community & Togetherness", text: "Building hope through unity and service." },
+      { title: "Children & Future Leaders", text: "Supporting kids with love, care, and resources." },
+      { title: "Growing in Strength", text: "Standing with families and youth in the community." },
+      { title: "Support on the Ground", text: "Serving where the need is real and immediate." },
+      { title: "Relief & Donations", text: "Delivering supplies directly to those in need." },
+      { title: "Community Impact", text: "Your support makes these moments possible." },
+      { title: "Food Donation Drive", text: "Providing essentials that help families thrive." },
+      { title: "Supplies Delivered", text: "Food and resources prepared with purpose." },
+      { title: "Serving Meals", text: "Hands-on support that feeds and restores." },
+      { title: "Volunteers United", text: "Partnership and service across communities." },
+      { title: "On the Ground", text: "Showing up personally for the people we serve." },
+      { title: "Smiles & Service", text: "Real people. Real stories. Real love." },
+      { title: "Faith & Fellowship", text: "A mission rooted in compassion and action." }
+    ];
+
+    let index = 0;
+    let timer = null;
+    const intervalMs = 4500;
+
+    function buildDots(){
+      dotsWrap.innerHTML = "";
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'dot' + (i === index ? ' active' : '');
+        d.type = 'button';
+        d.setAttribute('aria-label', `Go to photo ${i+1}`);
+        d.addEventListener('click', () => goTo(i, true));
+        dotsWrap.appendChild(d);
+      });
+    }
+
+    function setCaption(i){
+      const c = captions[i] || { title:"", text:"" };
+      capTitle.textContent = c.title || "";
+      capText.textContent  = c.text  || "";
+    }
+
+    function goTo(i, userInitiated=false){
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, n) => s.classList.toggle('active', n === index));
+      Array.from(dotsWrap.children).forEach((d, n) => d.classList.toggle('active', n === index));
+      setCaption(index);
+      if (userInitiated) restart();
+    }
+
+    function next(){ goTo(index + 1, true); }
+    function prev(){ goTo(index - 1, true); }
+
+    function start(){
+      stop();
+      timer = setInterval(() => goTo(index + 1, false), intervalMs);
+    }
+    function stop(){
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+    function restart(){ start(); }
+
+    setCaption(index);
+    buildDots();
+    start();
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      if (e.key === 'ArrowRight'){ e.preventDefault(); next(); }
+    });
+    carousel.setAttribute('tabindex', '0');
+  </script>
+</body>
+</html>

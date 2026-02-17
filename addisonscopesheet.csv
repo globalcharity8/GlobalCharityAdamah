@@ -1,0 +1,43 @@
+Category,Subcategory,Line Item,Description,Owner Type,Priority,Status,Estimated Budget
+Marketing,Social Media,Content Calendar,Plan 12 posts per month aligned to product milestones,Contractor,High,Not Started,500
+Marketing,Social Media,Content Creation,Design graphics and short-form video edits,Contractor,High,Not Started,800
+Marketing,Social Media,Landing Page Traffic,Drive traffic to waitlist page,Founder,High,Ongoing,0
+Marketing,Research,User Interviews,Conduct 10–20 ADHD user interviews,Founder,High,Not Started,0
+Marketing,Research,Beta Feedback Survey,Structured beta tester feedback collection,Founder,High,Not Started,0
+Marketing,Research,Competitor Audit,Analyze Motion Sunsama Tiimo feature sets,Founder,Medium,Ongoing,0
+
+Development,Front End,Onboarding Flow,Sign up flow with forgot password,Developer,High,Not Started,2000
+Development,Front End,Daily Check-In UI,Morning energy and intent interface,Developer,High,Not Started,1500
+Development,Front End,End of Day Recap,Daily productivity summary screen,Developer,High,Not Started,1500
+Development,Front End,Completion Flow,Task celebration and reinforcement screen,Developer,High,Not Started,1000
+Development,Back End,Auth Fixes,Email reuse and password reset functionality,Developer,High,Not Started,1500
+Development,Back End,Task Data Cleanup,Optimize database structure,Developer,High,Not Started,1200
+Development,Back End,Basic Smart Sorting,Importance and due date weighted logic,Developer,High,Not Started,2500
+Development,Back End,Timer Stability,Fix timer inconsistencies and tracking errors,Developer,High,Not Started,1000
+
+Design,UI Design,Onboarding Screens,High fidelity Figma onboarding flow,Designer,High,Not Started,1000
+Design,UI Design,Recap Screens,End of day and completion screens,Designer,High,Not Started,800
+Design,UI Design,Smart Mode UI,Now Later visual hierarchy system,Designer,High,Not Started,800
+Design,Brand Development,Visual System,Colors typography spacing system,Designer,Medium,Ongoing,600
+Design,Purchasing UX,Paywall Screen,Premium feature gating layout,Designer,Medium,Not Started,600
+
+Financials,Operating Costs,Firebase,Monthly backend infrastructure,Founder,High,Ongoing,50
+Financials,Operating Costs,Domain Hosting,Website hosting and domain,Founder,High,Ongoing,30
+Financials,Operating Costs,Developer Costs,Contract engineering budget allocation,Founder,High,Ongoing,10000
+Financials,Promotional Costs,Instagram Ads Test,Initial paid ad experiment,Founder,Medium,Not Started,500
+Financials,Promotional Costs,Beta Incentives,Gift cards for early testers,Founder,Medium,Not Started,300
+
+Legalities,Team Compliance,Contractor Agreements,IP and confidentiality contracts,Founder,High,Not Started,500
+Legalities,Policies,Privacy Policy,App store compliant privacy policy,Contractor,High,Not Started,300
+Legalities,Policies,Terms of Service,User agreement documentation,Contractor,High,Not Started,300
+Legalities,Policies,Subscription Terms,Subscription billing agreement language,Contractor,Medium,Not Started,200
+
+HR,Team Management,Weekly Sprint Meeting,Founder led product meeting cadence,Founder,High,Ongoing,0
+HR,Project Timeline,Roadmap Tracking,Maintain execution roadmap sheet,Founder,High,Ongoing,0
+HR,Customer Support,Support Email Setup,Set up dedicated support inbox,Founder,High,Not Started,0
+HR,Customer Support,FAQ Page,Basic help documentation page,Founder,Medium,Not Started,0
+
+Tech,Security,Firebase Security Rules,Configure secure database permissions,Developer,High,Not Started,800
+Tech,Data Management,Task Backup System,Ensure data persistence and reliability,Developer,High,Not Started,600
+Tech,Software Updates,Version Control,Structured GitHub release process,Founder,High,Ongoing,0
+Tech,Software Updates,Bug Tracking,Shared bug reporting sheet system,Founder,High,Ongoing,0

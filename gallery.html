@@ -1,0 +1,385 @@
+<!-- ===== OUR WORK (Gallery-first) ===== -->
+<section id="our-work" class="ourwork">
+  <div class="container">
+    <header class="ourwork-head">
+      <div>
+        <h2>Our work</h2>
+        <p class="ourwork-sub">
+          We show up with practical help—food, essentials, and community support—delivered with dignity and love.
+        </p>
+      </div>
+
+      <div class="ourwork-tags" aria-label="Work categories">
+        <button class="tag active" type="button" data-filter="all">All</button>
+        <button class="tag" type="button" data-filter="community">Community</button>
+        <button class="tag" type="button" data-filter="kids">Kids</button>
+        <button class="tag" type="button" data-filter="food">Food</button>
+        <button class="tag" type="button" data-filter="volunteers">Volunteers</button>
+      </div>
+    </header>
+
+    <!-- Featured (big) -->
+    <div class="ourwork-feature">
+      <div class="feature-media">
+        <img id="featureImg" src="Community.png" alt="Community gathering and support" />
+        <div class="feature-overlay" aria-hidden="true"></div>
+        <div class="feature-text">
+          <h3 id="featureTitle">Community Impact</h3>
+          <p id="featureDesc">Your support makes these moments possible—real help, on the ground.</p>
+        </div>
+      </div>
+
+      <div class="feature-side">
+        <div class="side-card">
+          <h4>What we do</h4>
+          <ul>
+            <li>Food & essentials distributions</li>
+            <li>Support for children and families</li>
+            <li>Local partnerships and outreach</li>
+            <li>Emergency response when needed</li>
+          </ul>
+        </div>
+
+        <div class="side-card soft">
+          <h4>Want to help?</h4>
+          <p>Donate, volunteer, or partner with us to support the next distribution.</p>
+          <div class="side-actions">
+            <a class="btn primary" href="#donate">Give now</a>
+            <a class="btn" href="#get-involved">Volunteer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="ourwork-grid" id="ourworkGrid" aria-label="Gallery">
+      <!-- Each tile: data-category used for filtering + feature swap -->
+      <button class="tile" type="button" data-category="community volunteers" data-title="Community & Togetherness"
+        data-desc="Building hope through unity and service." data-src="Community.png">
+        <img src="Community.png" alt="Community members gathered together" />
+      </button>
+
+      <button class="tile" type="button" data-category="kids community" data-title="Children & Future Leaders"
+        data-desc="Supporting kids with love, care, and resources." data-src="CommunityKids.png">
+        <img src="CommunityKids.png" alt="Children in the community standing together" />
+      </button>
+
+      <button class="tile" type="button" data-category="kids community" data-title="Growing in Strength"
+        data-desc="Standing with families and youth in the community." data-src="CommunityKids2.png">
+        <img src="CommunityKids2.png" alt="Community kids standing in a group" />
+      </button>
+
+      <button class="tile" type="button" data-category="kids community" data-title="Support on the Ground"
+        data-desc="Serving where the need is real and immediate." data-src="CommunityKids3.png">
+        <img src="CommunityKids3.png" alt="Kids and community members standing outside" />
+      </button>
+
+      <button class="tile" type="button" data-category="kids volunteers community" data-title="Relief & Donations"
+        data-desc="Delivering supplies directly to those in need." data-src="CommunityKids7.png">
+        <img src="CommunityKids7.png" alt="Group of children and volunteers with donations" />
+      </button>
+
+      <button class="tile" type="button" data-category="community" data-title="Community Impact"
+        data-desc="Your support makes these moments possible." data-src="Community5.png">
+        <img src="Community5.png" alt="Community group photo with donated supplies" />
+      </button>
+
+      <button class="tile" type="button" data-category="food" data-title="Food Donation Drive"
+        data-desc="Providing essentials that help families thrive." data-src="FoodDonation.png">
+        <img src="FoodDonation.png" alt="Food donation supplies prepared for distribution" />
+      </button>
+
+      <button class="tile" type="button" data-category="food" data-title="Supplies Delivered"
+        data-desc="Food and resources prepared with purpose." data-src="FoodDonations.png">
+        <img src="FoodDonations.png" alt="Multiple food donation bags and supplies displayed" />
+      </button>
+
+      <button class="tile" type="button" data-category="food volunteers" data-title="Serving Meals"
+        data-desc="Hands-on support that feeds and restores." data-src="ServinfFood2.png">
+        <img src="ServinfFood2.png" alt="Volunteers serving food in a kitchen" />
+      </button>
+
+      <button class="tile" type="button" data-category="volunteers community" data-title="Volunteers United"
+        data-desc="Partnership and service across communities." data-src="GroupPicture.png">
+        <img src="GroupPicture.png" alt="Group picture of volunteers and community members" />
+      </button>
+
+      <button class="tile" type="button" data-category="volunteers" data-title="On the Ground"
+        data-desc="Showing up personally for the people we serve." data-src="Selfie.png">
+        <img src="Selfie.png" alt="Volunteer selfie with community members" />
+      </button>
+
+      <button class="tile" type="button" data-category="volunteers" data-title="Smiles & Service"
+        data-desc="Real people. Real stories. Real love." data-src="Selfie2.png">
+        <img src="Selfie2.png" alt="Volunteer selfie with group of supporters" />
+      </button>
+
+      <button class="tile" type="button" data-category="volunteers community" data-title="Faith & Fellowship"
+        data-desc="A mission rooted in compassion and action." data-src="Selfie3.png">
+        <img src="Selfie3.png" alt="Volunteer selfie sitting outdoors with community members" />
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR WORK STYLES ===== -->
+<style>
+  .ourwork{
+    padding: 56px 0;
+  }
+
+  .ourwork-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom: 18px;
+  }
+
+  .ourwork h2{
+    margin:0;
+    font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+    letter-spacing: -.2px;
+  }
+
+  .ourwork-sub{
+    margin:.4rem 0 0;
+    color: var(--muted);
+    font-family: ui-sans-serif, system-ui;
+    max-width: 70ch;
+  }
+
+  .ourwork-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:flex-end;
+    font-family: ui-sans-serif, system-ui;
+  }
+
+  .tag{
+    padding: .55rem .9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(31,42,42,.14);
+    background: rgba(255,255,255,.9);
+    cursor:pointer;
+    font-weight: 700;
+    color: var(--muted);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .tag:hover{transform: translateY(-1px); background:#fff}
+  .tag.active{
+    background: rgba(47,111,99,.12);
+    border-color: rgba(47,111,99,.28);
+    color: var(--ink);
+  }
+
+  /* Featured layout */
+  .ourwork-feature{
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 14px;
+    align-items: stretch;
+    margin-bottom: 14px;
+  }
+
+  .feature-media{
+    position:relative;
+    border-radius: 22px;
+    overflow:hidden;
+    border: 1px solid rgba(31,42,42,.12);
+    box-shadow: 0 18px 40px rgba(31,42,42,.10);
+    background:#fff;
+    min-height: 360px;
+  }
+
+  .feature-media img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+    transform: scale(1.02);
+  }
+
+  .feature-overlay{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(900px 500px at 30% 20%, rgba(0,0,0,.08), rgba(0,0,0,.45)),
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+  }
+
+  .feature-text{
+    position:absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: 72%;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.84);
+    border: 1px solid rgba(31,42,42,.12);
+    backdrop-filter: blur(10px);
+    font-family: ui-sans-serif, system-ui;
+    color: var(--muted);
+  }
+
+  .feature-text h3{
+    margin:0 0 4px;
+    color: var(--ink);
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+  .feature-text p{margin:0; font-size: 1.02rem}
+
+  .feature-side{
+    display:grid;
+    gap: 14px;
+  }
+
+  .side-card{
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid rgba(31,42,42,.12);
+    box-shadow: 0 18px 40px rgba(31,42,42,.08);
+    font-family: ui-sans-serif, system-ui;
+  }
+
+  .side-card.soft{
+    background:
+      radial-gradient(700px 240px at 20% 0%, rgba(215,168,74,.22), transparent 55%),
+      linear-gradient(180deg, rgba(47,111,99,.08), rgba(255,255,255,.88));
+    border-color: rgba(47,111,99,.18);
+  }
+
+  .side-card h4{margin:0 0 10px; font-size: 1.05rem}
+  .side-card p{margin:0; color: var(--muted)}
+  .side-card ul{
+    margin:0;
+    padding-left: 18px;
+    color: var(--muted);
+    display:grid;
+    gap: 8px;
+  }
+
+  .side-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px}
+
+  /* Gallery grid */
+  .ourwork-grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+  }
+
+  .tile{
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(31,42,42,.12);
+    box-shadow: 0 12px 26px rgba(31,42,42,.08);
+    transition: transform .18s ease, box-shadow .18s ease;
+    position: relative;
+  }
+
+  .tile:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 38px rgba(31,42,42,.12);
+  }
+
+  .tile img{
+    width: 100%;
+    height: 100%;
+    display:block;
+    object-fit: cover;
+  }
+
+  /* Masonry-ish spans */
+  .tile:nth-child(1){ grid-column: span 5; grid-row: span 2; min-height: 260px; }
+  .tile:nth-child(2){ grid-column: span 3; min-height: 124px; }
+  .tile:nth-child(3){ grid-column: span 4; min-height: 124px; }
+  .tile:nth-child(4){ grid-column: span 4; min-height: 124px; }
+  .tile:nth-child(5){ grid-column: span 3; min-height: 124px; }
+  .tile:nth-child(6){ grid-column: span 5; min-height: 124px; }
+  .tile:nth-child(n+7){ grid-column: span 4; min-height: 170px; }
+
+  /* Responsive */
+  @media (max-width: 980px){
+    .ourwork-head{flex-direction:column; align-items:flex-start}
+    .ourwork-tags{justify-content:flex-start}
+    .ourwork-feature{grid-template-columns: 1fr}
+    .feature-media{min-height: 320px}
+    .feature-text{max-width: 92%}
+    .ourwork-grid{grid-template-columns: repeat(6, 1fr)}
+    .tile:nth-child(1){grid-column: span 6}
+    .tile:nth-child(2),
+    .tile:nth-child(3),
+    .tile:nth-child(4),
+    .tile:nth-child(5),
+    .tile:nth-child(6),
+    .tile:nth-child(n+7){grid-column: span 3}
+  }
+  @media (max-width: 560px){
+    .ourwork-grid{grid-template-columns: repeat(2, 1fr)}
+    .tile:nth-child(1),
+    .tile:nth-child(2),
+    .tile:nth-child(3),
+    .tile:nth-child(4),
+    .tile:nth-child(5),
+    .tile:nth-child(6),
+    .tile:nth-child(n+7){grid-column: span 2}
+  }
+</style>
+
+<!-- ===== OUR WORK SCRIPT (filter + feature swap) ===== -->
+<script>
+  (function(){
+    const featureImg = document.getElementById('featureImg');
+    const featureTitle = document.getElementById('featureTitle');
+    const featureDesc = document.getElementById('featureDesc');
+
+    const tiles = Array.from(document.querySelectorAll('#ourworkGrid .tile'));
+    const tags = Array.from(document.querySelectorAll('.ourwork-tags .tag'));
+
+    // Clicking a tile updates the featured image + text
+    tiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        const src = tile.getAttribute('data-src');
+        const title = tile.getAttribute('data-title') || 'Our work';
+        const desc = tile.getAttribute('data-desc') || '';
+
+        featureImg.src = src;
+        featureTitle.textContent = title;
+        featureDesc.textContent = desc;
+
+        // subtle animation
+        featureImg.style.opacity = '0.25';
+        setTimeout(() => featureImg.style.opacity = '1', 120);
+      });
+    });
+
+    // Filter buttons
+    function setActiveTag(btn){
+      tags.forEach(t => t.classList.toggle('active', t === btn));
+    }
+
+    function applyFilter(filter){
+      tiles.forEach(tile => {
+        const cats = (tile.getAttribute('data-category') || '').toLowerCase();
+        const show = filter === 'all' || cats.includes(filter);
+        tile.style.display = show ? '' : 'none';
+      });
+    }
+
+    tags.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        setActiveTag(btn);
+        applyFilter(filter);
+      });
+    });
+  })();
+</script>
